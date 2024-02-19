@@ -1,47 +1,225 @@
 {
-    "start_state" : "start",
 
-    "states" : {
-        
-        "start": {
-            "text" : "Get out of my swamp!<br>Do you go in?<br>A = YES B = NO",
-            "next_state" : [ 
+        "Start": {
+            "text" : "You're working the graveyard shift at a gas station when a man walks in asking for some cash to help him get home. Select A to help or select B to not help.",
+            "Img" : "imgs/konbini.jpg",
+            "next_state" : [
                                {
-                                    "state_name" : "go_in_swamp_stim",
-                                    "key_input"  : "A"
-                                },
-                                {
-                                    "state_name" : ["kill", "run"],
-                                    "key_input"  :"B"
+                                    "A" : "Help",
+                                    "B"  :"DontHelp"
                                 }
                             ]
         },
-        "go_in_swamp_stim": {
-                        "next_state" : [ "go_in_swamp" ],
-                        "stim_change" : 10,
-                        "show_button" : "c",
-                        "point_change" : 1 ,
-                        "image_change" : "<img src=\"imgs/lord_farquaad_shirtless_by_shrek4ever69_d9ya24f-414w-2x.jpg\">"
-                        },
-        "go_in_swamp" : {
-            "play_sound" : "sound/following.mp3",
-            "show_text" : "YOU DIE!!! And are now SHrek Shoes! And Toilet paper!! ",
-            "next_state" : "restart",
-            "dope_change" : 1,
-            "delay": 10000
+        "Help": {
+            "text" : "He leaves and you realize there was a woman behind him, she asks you where the bathroom is. Select A to lead her there or select B to point in the right direction.",
+            "Img" : "imgs/girl.jpg",
+            "next_state" : [
+                               {
+                                    "A" : "Lead",
+                                    "B" : "Point"
+                                }
+                            ]
         },
-        "run" : { 
-            "text" : "Run for your life you little screaming toad",
-            "next_state" : "start",
-            "stim_change" : 1 
-        },  
-        "kill" : {
-            "next_state" : "start",
-            "stim_change" : 1
+	"Lead": {
+            "text" : "Select A to know your fate.",
+            "Img" : "imgs/black.png",
+            "next_state" : [
+                               {
+                                    "A" : "DeadEnd"
+                                }
+                            ]
         },
-        "restart" : { 
-            "restart_cmd" : true 
-        } 
+	"Point": {
+            "text" : "An hour passes and you notice she hasn't left the bathroom yet. Select A to check on her or select B to ignore it.",
+                  "Img" : "imgs/clock.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "Check",
+                                    "B" : "DontCheck"
+                                }
+                            ]
+        },
+	"Check": {
+            "text" : "You check and find a lot of blood but no woman. Select A to keep looking or select B to call the police.",
+                  "Img" : "imgs/bathroom.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "KeepLooking",
+                                    "B" : "CallPopo2"
+                                }
+                            ]
+        },
+	"KeepLooking": {
+            "text" : "You start looking again when the lights suddenly turn off, causing you to trip and twist your ankle. Select A to keep looking or select B to call the police.",
+                  "Img" : "imgs/dark.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "KeepLooking2",
+                                    "B" : "CallPopo3"
+                                }
+                            ]
+        },
+	"KeepLooking2": {
+            "text" : "You find a flashlight and hear a scream outside. Select A to go outside or select B to stay put.",
+                  "Img" : "imgs/flashlight.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "GoOutside",
+                                    "B" : "StayPut"
+                                }
+                            ]
+        },
+	"GoOutside": {
+            "text" : "You go out to the main road and attempt an SOS signal with the light. Select A for ...---... or select B for ---...---",
+                  "Img" : "imgs/street.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "SOSEnd",
+                                    "B" : "DeadEnd"
+                                }
+                            ]
+        },
+	"StayPut": {
+            "text" : "Select A to know your fate.",
+                  "Img" : "imgs/black.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "DeadEnd"
+                                }
+                            ]
+        },
+	"CallPopo3": {
+            "text" : "You try to call the police but the line is disconnected. Select A to grab your phone from your locker or select B to stay put.",
+                  "Img" : "imgs/phone.png",
+      "next_state" : [
+                               {
+                                    "A" : "DeadEnd",
+                                    "B" : "StayPut"
+                                }
+                            ]
+        },
+	"CallPopo2": {
+            "text" : "You try to call the police but the line is diconnected. Select A to grab your phone from your locker or select B to stay put.",
+                  "Img" : "imgs/phone.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "Locker",
+                                    "B" : "StayPut"
+                                }
+                            ]
+        },
+	"Locker": {
+            "text" : "You grab your phone when all of a sudden the woman jumps out trying to kill you. You run out the back door, getting to the main road and attempt an SOS signal with your phone. Select A for ...---... or select B for ---...---",
+                  "Img" : "imgs/street.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "SOSEnd",
+                                    "B" : "NotSOSEnd"
+                                }
+                            ]
+        },
+	"DontCheck": {
+            "text" : "The lights suddenly turn off. Select A to hide or select B to go outside and check the power.",
+                  "Img" : "imgs/dark.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "DeadEnd",
+                                    "B" : "CheckPower"
+                                }
+                            ]
+        },
+	"CheckPower": {
+            "text" : "You go outide and find there is nothing you can do to get the power back on. The man from earlier returns to pay you back. Select A to close up and ask for a ride home or select B to go back inside.",
+                  "Img" : "imgs/man.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "RideHomeEnd",
+                                    "B" : "DeadEnd"
+                                }
+                            ]
+        },
+	"DontHelp": {
+            "text" : "The man leaves to go sit by his car and wait for help. After an hour you decide to use the bathroom but once you enter you find blood. Select A to call the police or select B to leave.",
+                  "Img" : "imgs/bathroom.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "CallPopo",
+                                    "B" : "Leave"
+                                }
+                            ]
+        },
+	"CallPopo": {
+            "text" : "You try to call the police but the line is disconnected. Select A to grab your phone from your locker or select B to stay put.",
+                  "Img" : "imgs/phone.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "LockerEnd",
+                                    "B" : "DeadEnd"
+                                }
+                            ]
+        },
+	"Leave": {
+            "text" : "You try to leave but somehow the door is locked. You try to ask the man outside for help but he just laughs at you and turns away. Select A to give up or select B to try asking for help again.",
+                  "Img" : "imgs/car.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "SparedEnd",
+                                    "B" : "DeadEnd"
+                                }
+                            ]
+        },
+	"DeadEnd": {
+            "text" : "The entity killed you + press A to try again",
+                  "Img" : "imgs/momo.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "Start"
+                                }
+                            ]
+        },
+	"SOSEnd": {
+            "text" : "Good ending SOS worked + Press A to play again",
+                  "Img" : "imgs/driving.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "Start"
+                                }
+                            ]
+        },
+	"NotSOSEnd": {
+            "text" : "Bad ending, SOS was not selected correctly + Press A to try again",
+                  "Img" : "imgs/momo.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "Start"
+                                }
+                            ]
+        },
+	"RideHomeEnd": {
+            "text" : "Good ending you got a ride home + Press A to play again",
+                  "Img" : "imgs/driving.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "Start"
+                                }
+                            ]
+        },
+	"LockerEnd": {
+            "text" : "You grab your phone when all of a sudden the woman jumps out trying to kill you. You run out the back door, getting to the main road and attempt an SOS signal with your phone but there is nobody to help you + Press A to try again",
+                  "Img" : "imgs/momo.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "Start"
+                                }
+                            ]
+        },
+	"SparedEnd": {
+            "text" : "Good end you were spared by the entity lol + Press A to play again",
+                  "Img" : "imgs/nicemomo.jpg",
+      "next_state" : [
+                               {
+                                    "A" : "Start"
+                                }
+                            ]
+        }
     }
-}
-
